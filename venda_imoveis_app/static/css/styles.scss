@@ -1,0 +1,71 @@
+// Login Page
+body {
+    background: linear-gradient(#205072, #329D9C) ;
+}
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        height: 25rem;
+        width: 25rem;
+        //padding: 15rem 0rem 5rem 0rem;
+        display:  flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        //background: linear-gradient(#329D9C, #205072) ;
+        background: linear-gradient(
+            to right bottom,
+            rgba(255,255,255,0.6),
+            rgba(255,255,255,0.3)
+        );
+        border-radius: 1.5rem;
+
+        .title-container {
+            margin: 2rem;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .form-container{
+            width: 70%;
+        }
+
+        form {
+            input {
+                border-radius: 0.5rem;
+                background: rgba(255, 255, 255, 0.7);
+
+                &:focus {
+                    background:white;
+                }
+            }
+    
+            .btn-login {
+                background: #56C596;
+                border: 1px solid #56C596;
+                color: white;
+                border-radius: 0.5rem;
+                box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
+    
+                &:hover {
+                    background: #278f64;
+                    border: 1px solid #278f64;
+                    border-radius: 0.5rem;
+                    color: white;
+                }
+            }
+        }
+    } 
+}
+
+// Home Page
+p {
+    color: red;
+}
