@@ -1,6 +1,15 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 
+class Imovel(models.Model):
+    tipo = models.CharField(max_length=255, default="")
+    localizacao = models.CharField(max_length=255, default="")
+    valor = MoneyField(max_digits=14, decimal_places=2, default_currency='BRL')
+    comissao_vendedor = MoneyField(max_digits=14, decimal_places=2, default_currency='BRL')
+
+    def __str__(self):
+        return self
+
 class Corretor(models.Model):
     nome = models.CharField(max_length=255, default="")
     senha = models.CharField(max_length=255, default="")

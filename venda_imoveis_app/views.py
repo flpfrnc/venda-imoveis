@@ -38,5 +38,13 @@ def submit_login(request):
 
 
 @login_required(login_url='/login/')
-def index(request):
-    return render(request, 'index.html')
+def imoveis(request):
+    if request.POST:
+        nome = request.POST.get('nome')
+        cpf = request.POST.get('cpf')
+        email = request.POST.get('email')
+        telefone = request.POST.get('telefone')
+
+        print(nome + " " + cpf + " " + email + " " + telefone)
+        
+    return render(request, 'pages/imoveis.html')

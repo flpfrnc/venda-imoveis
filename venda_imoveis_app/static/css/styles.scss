@@ -1,14 +1,42 @@
-// Login Page
-body {
-    background: linear-gradient(#205072, #329D9C) ;
+.btn-fill {
+    background: #56C596;
+    border: 1px solid #56C596;
+    color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
+
+    &:hover {
+        background: #278f64;
+        border: 1px solid #278f64;
+        border-radius: 0.5rem;
+        color: white;
+    }
 }
 
+.btn-inverse {
+    background: white;
+    border: 1px solid #56C596;
+    color: #56C596;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
+
+    &:hover {
+        background: #56C596;
+        border: 1px solid #56C596;
+        border-radius: 0.5rem;
+        color: white;
+    }
+}
+
+// Login Page
 .login {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(#205072, #329D9C);
+    font-family: 'Archivo', sans-serif;
 
     .container {
         height: 25rem;
@@ -46,26 +74,29 @@ body {
                     background:white;
                 }
             }
-    
-            .btn-login {
-                background: #56C596;
-                border: 1px solid #56C596;
-                color: white;
-                border-radius: 0.5rem;
-                box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
-    
-                &:hover {
-                    background: #278f64;
-                    border: 1px solid #278f64;
-                    border-radius: 0.5rem;
-                    color: white;
-                }
-            }
         }
     } 
 }
 
-// Home Page
-p {
-    color: red;
+// Imoveis Page
+.imoveis {
+    .navbar {
+        align-items: center;
+        height: 8vh;
+
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+    
+        li {   
+            margin-left: 2rem;     
+            a {
+                color: #56C596;
+            }
+        }
+    }
 }
+

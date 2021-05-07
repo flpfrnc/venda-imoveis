@@ -2,8 +2,8 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('', index, name="index"),
-    path('home/', index, name="index"),
+    path('', imoveis, name="imoveis"),
+    path('home/', imoveis, name="imoveis"),
     path('login/', user_login, name="login"),
     path('login/submit', submit_login),
 ]
