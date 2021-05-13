@@ -1,0 +1,89 @@
+{% extends 'components/form_imoveis.html'%}
+{% block resumo %}
+<div class="resumo-content">
+    <div class="container">
+        <!-- Recebe os dados enviados pela simulação, mostrando-os 
+        em um header, e preparando para o envio para cadastro de venda -->
+        <div>
+            <div class="box-element" id="form-wrapper">
+                <form action="{% url 'cadastro_venda' %}" method="POST">
+                    {% csrf_token %}
+                    <div id="dados-imovel">
+                        <p><h5>Dados Imovel:</h5></p>
+                        <hr>
+                        <div class="form-field">
+                            <input type="hidden" class="form-control" id="id_imovel" name="id_imovel" value="{{ imovel.id }}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="tipo" class="col-form-label">Tipo:</label>
+                            <h5  id="tipo_header">{{ imovel.tipo }}</h5>
+                            <input type="hidden" class="form-control" id="tipo"  value="{{imovel.tipo}}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="localizacao" class="col-form-label">Localização:</label>
+                            <h5  id="localizacao_header">{{imovel.localizacao }}</h5>
+                            <input type="hidden" class="form-control" id="localizacao"  value="{{imovel.localizacao}}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="valor_imovel" class="col-form-label">Valor:</label>
+                            <h5  id="valor_header">{{imovel.valor }}</h5>
+                            <input type="hidden" class="form-control" id="valor_imovel" name="valor_imovel"  value="{{imovel.valor.amount }}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="comissao_vendedor_imovel" class="col-form-label">Comissão:</label>
+                            <h5 id="comissao_header">{{imovel.comissao_vendedor }}</h5>
+                            <input type="hidden" class="form-control" id="comissao_vendedor_imovel" value="{{imovel.comissao_vendedor.amount }}" readonly>
+                        </div>
+                        <p>
+                            <div class="form-field">
+                                <label for="condicao_pagamento_imovel" class="col-form-label">Pagamento:</label>
+                                <h5 class="condicao_header" id="condicao_header">{{ pagamento }}</h5>
+                                <h6 style="color: rgb(210, 210, 210) "class="valor_resumo_header" id="valor_resumo_header"></h6>
+                                <input type="hidden" class="form-control" id="condicao_pagamento_imovel" name="condicao_pagamento_imovel" value="{{ pagamento }}" readonly>
+                            </div>
+                        </p>
+                        <div>
+                            <label class="col-form-label" for="cliente_imovel">Comprador:</label>
+                            <h5 id="nome_header">{{ cliente.nome }}</h5>
+                            <input type="hidden" class="form-control"  id="cliente_imovel" name="cliente_imovel" value="{{ cliente.nome }}" readonly>
+                        </div>
+                        <div>
+                            <label class="col-form-label" for="vendedor_imovel">Vendedor:</label>
+                            <h5 id="nome_header">{{ corretor.nome }}</h5>
+                            <input type="hidden" class="form-control" id="vendedor_imovel" name="vendedor_imovel" value="{{ corretor.id }}" readonly>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="button-container" style="display: flex; width: 100%; justify-content: space-between">
+                        <input id="form-button" class="btn btn-fill btn-block" type="submit" value="Confirmar">
+                        <a class="btn btn-voltar btn-block" type="button" href="{% url 'imoveis'%}">Voltar para imoveis</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ /* 
+Muda a exibição do valor de pagamento:
+ - Exibe valor total caso a escolha tenha sido "a vista"
+ - Exibe valor de parcelamento caso a escolha tenha sido "180x"
+*/
+$(document).ready(()=>{
+    $('#condicao_header').html("{{ pagamento }}")
+        
+    if($('#condicao_header').html() === "180x"){
+        let valorParcela = "{{ parcelas | floatformat:2 }}"
+        valorParcela = valorParcela.replace('.',',')
+        let thousandSeparator = valorParcela.length - 3
+            if(thousandSeparator >= 4){
+                valorParcela = valorParcela.substr(0, thousandSeparator-3) 
+                                    + "." + valorParcela.substr(thousandSeparator-3, valorParcela.length)
+            }
+        $('#valor_resumo_header').html("R$" + valorParcela);
+    }else{
+        $('#valor_resumo_header').html("{{ imovel.valor}}");
+    }
+})
+</script>
+{% endblock %}

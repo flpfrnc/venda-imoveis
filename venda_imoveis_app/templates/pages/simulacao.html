@@ -1,0 +1,107 @@
+{% extends 'components/form_imoveis.html' %}
+{% load static %}
+{% block simulacao %}
+<div class="simulacao-content">
+    <div class="container">
+        <div class="row">
+        <!-- Recebe os dados enviados pela seleção do imóvel e envia apenas os dados 
+        de id do imovel, forma de pagamento e cliente para a página de resumo -->
+            {% if imovel_simulacao %}
+            <div class="col-lg-6">
+                <div class="box-element" id="form-wrapper">
+                    <form id="form" action="{% url 'resumo' imovel_simulacao.pk %}" method="POST">
+                        {% csrf_token %}
+                        <div id="dados-imovel">
+                            <p><h5>Dados Imovel:</h5></p>
+                            <hr>
+                            <div class="form-field">
+                                <input type="hidden" id="id_imovel" name="id_imovel" class="form-control" value="{{imovel_simulacao.id}}" readonly>
+                            </div>
+                            <div class="form-field">
+                                <label for="tipo" class="col-form-label">Tipo:</label>
+                                <input type="text" id="tipo" class="form-control" value="{{imovel_simulacao.tipo}}" readonly>
+                            </div>
+                            <div class="form-field">
+                                <label for="localizacao" class="col-form-label">Localização:</label>
+                                <input type="text" id="localizacao" class="form-control" value="{{imovel_simulacao.localizacao}}" readonly>
+                            </div>
+                            <div class="form-field">
+                                <label for="valor" class="col-form-label">Valor:</label>
+                                <input type="text" id="valor" class="form-control" value="{{imovel_simulacao.valor.amount }}" readonly>
+                            </div>
+                            <div class="form-field">
+                                <label for="comissao_vendedor" class="col-form-label">Comissão:</label>
+                                <input type="text" id="comissao_vendedor" class="form-control" value="{{imovel_simulacao.comissao_vendedor.amount }}" readonly>
+                            </div>
+                            <p>
+                                <p>Pagamento:</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"name="formaPagamento"  value="a vista" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        À vista
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="formaPagamento"  value="180x" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Parcelado: 180x
+                                    </label>
+                                </div>
+                            </p>
+                            <div>
+                            <label class="form-check-label" for="cliente_compra">Comprador:</label>
+                            <select id="cliente_compra" name="cliente_compra" class="form-select" aria-label="Default select example">
+                                <option value="" selected>Selecionar cliente</option>
+                                {% for clientes in clientes %}
+                                        <option value="{{clientes.pk}}">{{ clientes.nome }}</option>
+                                {% endfor %}
+                            </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <input id="form-button" class="btn btn-fill btn-block" type="submit" value="Confirmar">
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-lg-6">
+                <div class="box-element">
+                    <a href="{% url 'imoveis' %}" class="btn btn-voltar">&#x2190; Voltar para imóveis</a>
+                    {% if imovel_simulacao %}
+                    <hr>
+                    <h4>Condição de pagamento</h4>
+                    <hr>
+                    <span>
+                    <h5 class="condicao_header" id="condicao_header">a vista</h5>
+                        <h6 style="color: rgb(210, 210, 210)" class="valor_simulacao_header" id="valor_simulacao_header">{{imovel_simulacao.valor}}</h6>
+                    </span>
+                    {% endif %}
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+/* 
+Muda a exibição do valor de pagamento dependendo do estado do form radio:
+ - Exibe valor total caso seja escolhido "a vista"
+ - Exibe valor de parcelamento caso seja escolhido "180x"
+*/
+$("input[name=formaPagamento]").on('change', function(){
+    $('#condicao_header').html($('input[name=formaPagamento]:checked').val())
+    
+    if($('#condicao_header').html() === "180x"){
+        let valorParcela = "{{ parcelas | floatformat:2 }}"
+        valorParcela = valorParcela.replace('.',',')
+        let thousandSeparator = valorParcela.length - 3
+            if(thousandSeparator >= 4){
+                valorParcela = valorParcela.substr(0, thousandSeparator-3) 
+                                    + "." + valorParcela.substr(thousandSeparator-3, valorParcela.length)
+            }
+        $('#valor_simulacao_header').html("R$" + valorParcela);
+    }else{
+        $('#valor_simulacao_header').html("{{ imovel_simulacao.valor}}");
+    }
+})
+</script>
+{% endblock %}

@@ -9,17 +9,36 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link 
-            rel="stylesheet" 
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-            crossorigin="anonymous"
-        >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <script src="https://kit.fontawesome.com/c5dcbf4cfc.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% sass_src 'css/styles.scss'%}">
+        <script src="{% static 'js/app.js'%}"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="app">{% block imoveis_container %}{% endblock %}</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="app">
+            <!-- Container de todos os componentes da aplicação -->
+            <div class="content">
+                {% block navbar %}
+                {% endblock %}
+                {% block lista_imoveis %}{% endblock %}
+                {% block lista_clientes %}{% endblock %}
+                {% block simulacao %}
+                {% endblock %}
+                {% block resumo %}
+                {% endblock %}
+                <div class="footer">
+                    {% if user.is_authenticated %}
+                        <div class="greetings">Bem vindo, <strong>{{user.get_full_name}}</strong></div>
+                    {% endif %}
+                    <form class="form-logout" action="{% url 'logout' %}" class="inline-form" method="get">
+                        <button class="btn btn-logout" name="logout" value="logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     </body>
 </html>

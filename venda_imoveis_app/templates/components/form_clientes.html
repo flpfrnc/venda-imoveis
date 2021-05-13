@@ -1,0 +1,49 @@
+{% extends  'components/form_base.html' %}
+{% block modal_clientes %}
+<!-- Form modal para cadastro/edição de cliente -->     
+    <div class="modal-body">
+        <form class="formCadastroCliente" method="POST">
+            {% csrf_token %}
+            {{form.non_field_errors}}
+            <div class="checkEdit">
+                <p><input type="hidden" id="check_edit" name="check_edit" value="false"></p>
+            </div>
+            <div class="id-wrapper">
+                <input type="hidden"class="form-control" id="id-cliente" name="id_cliente" value="">
+            </div>
+            <div class="nome-wrapper">
+                {{form.nome.errors}}
+                <label for="nome-cliente" class="col-form-label">Nome</label>
+                <p>{{form.nome}}</p>
+            </div>
+            <div class="cpf-wrapper">
+                {{form.cpf.errors}}
+                <label for="cpf-cliente" class="col-form-label">CPF</label>
+                <p>{{form.cpf}}</p>
+            </div>
+            <div class="email-wrapper">
+                {{form.email.errors}}
+                <label for="email-cliente" class="col-form-label">E-mail</label>
+                <p>{{form.email}}</p>
+            </div>
+            <div class="telefone-wrapper">
+                {{form.telefone.errors}}
+                <label for="telefone-cliente" class="col-form-label">Telefone</label>
+                <p>{{form.telefone}}</p>
+            </div>
+            <p>
+                <div>
+                    <button type="submit" class="btn btn-fill">Cadastrar</button>
+                </div>
+            </p>
+        </form>
+    </div>
+{% endblock %}
+<!-- Opções de filtro dos clientes -->
+{% block select_clientes%}
+    <option value="remover" selected>Filtrar por:</option>
+    <option value="cadastro">Filtrar por: <strong>data de cadastro</strong></option>
+    <option value="id">Filtrar por: <strong>mais antigo</strong></option>
+    <option value="nome">Filtrar por: <strong>nome</strong></option>
+    <option value="remover">Remover filtro</option>
+{% endblock %}

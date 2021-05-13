@@ -1,0 +1,64 @@
+{% extends 'components/form_clientes.html' %}
+{% load static %}
+{% block lista_clientes %}
+{% if clientes %}
+<div class="list-content">
+<table class="table-light">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Contato</th>
+                <th>Data de cadastro</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="dados-cliente">
+            {% for clientes in clientes %}
+            <tr>            
+                <td>
+                    <img 
+                    style="border-radius: 25px; margin-right: 0.5rem" 
+                    src="{% static 'images/user.png' %}" 
+                    alt="" 
+                    width="50px" 
+                    height="50px">
+                    <span>{{ clientes.nome }}</span>                    
+                </td>
+                <td>{{ clientes.email }}</td>
+                <td>{{ clientes.cadastro }}</td>
+                <td>
+                    <div id="dropdown" class="dropdown">
+                    <div class="btn btn-option" id="option-btn"><i id="icon-option" class="fas fa-ellipsis-h"></i></div>
+                        <div id="imovel-options" class="dropdown-content">
+                            <div>
+                            <!-- Envia os dados para preencher o modal de edição do cliente selecionado -->
+                                <button
+                                    class="btn btn-editar" 
+                                    type="button" 
+                                    data-bs-title="Editar {{ identifier }}"
+                                    data-bs-check="true"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#modalCadastro" 
+                                    data-bs-nome="{{ clientes.nome}}"
+                                    data-bs-cpf="{{ clientes.cpf }}"
+                                    data-bs-email="{{ clientes.email }}" 
+                                    data-bs-telefone="{{ clientes.telefone }}"
+                                    data-bs-id-cliente="{{ clientes.id }}"
+                                >Editar</button>
+                            </div>
+                            <div>
+                                <form id="selected_form" class="form-inline" action="{% url 'delete_cliente' clientes.pk %}" method="POST">
+                                {% csrf_token %}
+                                    <button type="submit" class="btn btn-excluir" id="option-excluir">Excluir</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

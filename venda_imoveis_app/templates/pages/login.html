@@ -16,14 +16,15 @@
         >
         <link rel="stylesheet" href="{% sass_src 'css/styles.scss'%}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
     </head>
     <body>
         <div class="login">
             <div class="container">
                 <div class="title-container">Login Vendedor</div>
                 <div class="form-container">
-                <form action="submit", method="POST" class="form-group"> 
+                <form action="submit" method="POST" class="form-group"> 
                 {% csrf_token %}
                     <label class="sr-only" for="username_input">Usuario</label>
                     <div class="input-group mb-3 mr-lg">

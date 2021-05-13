@@ -1,0 +1,15 @@
+{% extends 'components/navbar.html' %}
+{% block modal_base %}
+    <div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastro" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                </div>
+                {% block modal_clientes %}{% endblock %}
+                {% block modal_imoveis %}{% endblock %}            
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

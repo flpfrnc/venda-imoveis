@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+        <!-- Identificador da pagina de cadastro troca a palavr após "Gerenciar" ~>  "Cliente" ou "Imovel"-->
+        {% if identifier %}
+            <h5 class="gerenciar-identifier"><strong>Gerenciar {{ identifier }}</strong></h5>
+        {% endif %}
+            <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Filtros só são mostrados caso esteja em uma página que exija 
+            identificador consequentemente uma página que contém uma lista-->
+            {% if identifier %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <form class="form-inline" method="GET">
+                            <input class="form-control mr-sm-2" type="search" name="srch" id="searchbox"placeholder="Pesquisar {{ identifier }}" aria-label="Search">
+                        </form>
+                    </li>                
+                    <li class="nav-item">
+                    <form id="filterForm" action="?" method="post">
+                    {% csrf_token %}
+                        <select id="filterSelection" name="option" class="form-select btn btn-inverse" aria-label=".form-select-sm">
+                        <!-- Bloco de corpo dos filtros da pagina -->
+                        {% block select_imoveis%}{% endblock %}
+                        {% block select_clientes%}{% endblock %}
+                        </select>                    
+                    </form>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button 
+                                class="btn btn-inverse dropdown-toggle" 
+                                type="button" 
+                                id="navbarDropdown" 
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Paginas Cadastro
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'clientes'%}">Clientes</a>
+                            <a class="dropdown-item" href="{% url 'imoveis'%}">Imóveis</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-inverse" type="button" data-bs-toggle="modal" data-bs-target="#modalCadastro" data-bs-title="Cadastrar {{ identifier }}">Cadastrar {{ identifier }} <i class="fas fa-plus"></i></button>
+                    </li>
+                    {% if messages %}
+                        <!-- Mensagem de erro em caso de exception na view -->
+                        {% for message in messages %}
+                            <script>
+                            alert("{{ message }}")
+                            </script>
+                        {% endfor %}
+                    {% endif %}
+                </ul>           
+            </div>
+            {% endif %}
+        </div>
+    </nav> 
+    <script>
+    /*
+    Realiza o submit do form select durante a mudança de option
+    e mantém opção escolhida caso não seja feita a remoção do filtro
+    */
+    const selector = $("#filterSelection");
+    selector.on("change", function(e) {
+        if(selector.val() === ""){
+            return;
+        }else{
+            e.preventDefault();
+            $("#filterForm").submit();      
+        }  
+    });
+    
+    if("{{ select }}" === "remover" ||
+        "{{ select }}" === ""){
+        console.log("Nenhum filtro selecionado")
+    }else{
+        selector.val("{{ select }}");
+    }
+    </script>
+    <!-- Corpo do modal que realiza os cadastros e edits | form_base.html -->
+    {% block modal_base %}
+    {% endblock %}
+{% endblock %}

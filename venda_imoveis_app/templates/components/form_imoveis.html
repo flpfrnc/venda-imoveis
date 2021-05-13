@@ -1,0 +1,44 @@
+{% extends 'components/form_base.html' %}
+{% block modal_imoveis %}
+<!-- Form modal para cadastro/edição de imovel -->        
+    <div class="modal-body">
+        <form class="formCadastroImovel" action="?" method="post">
+            {% csrf_token %}
+            {{form.non_field_errors}}
+            <div class="check-wrapper">
+                <p><input type="hidden" id="check_edit" name="check_edit" value="false"></p>
+            </div>
+            <div class="id-wrapper">
+                <p><input type="hidden" id="id_imovel" name="id_imovel" value="10"></p>
+            </div>
+            <div class="tipo-wrapper">
+                {{form.tipo.errors}}
+                <label for="{{form.tipo.id_for_label}}">Tipo:</label>
+                <p>{{form.tipo}}</p>
+            </div>
+            <div class="localizacao-wrapper">
+                {{form.localizacao.errors}}
+                <label for="{{form.localizacao.id_for_label}}">Localizacao:</label>
+                <p>{{form.localizacao}}</p>
+            </div>
+            <div class="valor-wrapper">
+                {{form.valor.errors}}
+                <label for="{{form.valor.id_for_label}}">Valor:</label>
+                <p>{{form.valor}}</p>
+            </div>
+            <div class="comissao-wrapper">
+                {{form.comissao_vendedor.errors}}
+                <label for="{{form.comissao_vendedor.id_for_label}}">Comissão:</label>
+                <p>{{form.comissao_vendedor}}</p>
+            </div>
+            <button class="btn btn-fill" type="submit">Cadastrar</button>
+        </form>
+    </div>
+{% endblock %}
+<!-- Opções de filtro dos imoveis -->
+{% block select_imoveis%}
+    <option value="remover" selected>Filtrar por:</option>
+    <option value="valor">Filtrar por: <strong>valor</strong></option>
+    <option value="id">Filtrar por: <strong>mais antigo</strong></option>
+    <option value="remover">Remover filtro</option>
+{% endblock %}

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0c(9mfprkqsw__2+n8gffk$!m*u2zly*=&y0z!c)k@+!9%7kl2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'venda_imoveis_app',
     'sass_processor',
     'djmoney',
+    'corsheaders',
+    'django.utils.timezone'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "https://instagram.fnat16-1.fna.fbcdn.net"
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
 ]
 
 ROOT_URLCONF = 'venda_imoveis.urls'
@@ -143,11 +161,20 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-USE_DECIMAL_SEPARATOR = True
-DECIMAL_SEPARATOR = ","
+TIME_ZONE = 'America/Sao_Paulo'
 
-USE_THOUSAND_SEPARATOR = True
-THOUSAND_SEPARATOR = "."
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+DECIMAL_SEPARATOR = "."
+USE_DECIMAL_SEPARATOR = False
+
+
+THOUSAND_SEPARATOR='.'
+USE_THOUSAND_SEPARATOR=False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
