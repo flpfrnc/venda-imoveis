@@ -15,6 +15,9 @@ $ cd venda-imoveis
 # inicie o virtual environment
 $ virtualenv env
 
+# ative o virtual environment
+$ . env/bin/activate
+
 # instale as dependências
 $ pip install -r requirements.txt
 
