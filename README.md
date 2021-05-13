@@ -27,11 +27,6 @@ $ python3 manage.py runserver
 
 #### O projeto foi desenvolvido utilizando (Python3 + Django), JQuery, Sass ( utilizando uma dependência para que o Django reconheça os arquivos Sass como css )
 #### Banco de dados utilizado: <i>Padrão do django: Sqlite3</i>
-##### O projeto conta com:
-- página que lista imóveis
-- página que lista os clientes
-- página de simulação de venda
-- página de resumo de venda
 
 ##### Vendedor já cadastrado no banco
 ##### Dados vendedor:
@@ -41,3 +36,21 @@ $ python3 manage.py runserver
 ##### Dados admin (Para login na página: <i>localhost:8000/admin</i> ):
 - login: <i>admin</i>
 - senha: <i>admin</i>
+
+
+##### O projeto conta com:
+- página que lista imóveis
+
+<img width="600px" src="./assets_github/pagina_imoveis.jpg">
+
+- página que lista os clientes
+
+<img width="600px" src="./assets_github/pagina_clientes.jpg">
+  
+- página de simulação de venda
+
+<img width="600px" src="./assets_github/pagina_simulação.jpg">
+
+- página de resumo de venda 
+
+<img width="600px" src="./assets_github/pagina_resumo.jpg">
