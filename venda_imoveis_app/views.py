@@ -191,7 +191,7 @@ def cadastro_venda(request):
         id_imovel = request.POST.get("id_imovel")
         instance_imovel = Imovel.objects.get(pk=id_imovel)        
         id_corretor = request.POST.get("vendedor_imovel")
-        instance_corretoor = Corretor.objects.get(pk=id_corretor)
+        instance_corretor = Corretor.objects.get(pk=id_corretor)
 
         #Dados restantes do model
         valor = request.POST.get("valor_imovel")        
@@ -199,7 +199,7 @@ def cadastro_venda(request):
         pagamento = request.POST.get("condicao_pagamento_imovel")
         
         #Verifica se venda já existe e cria uma nova caso não exista
-        venda = Venda.objects.get_or_create(imovel=imovel, valor=valor, corretor=corretor, cliente=cliente, condicao_pagamento=pagamento)
+        venda = Venda.objects.get_or_create(imovel=instance_imovel, valor=valor, corretor=instance_corretor, cliente=cliente, condicao_pagamento=pagamento)
         return redirect("/imoveis/")
 
 
