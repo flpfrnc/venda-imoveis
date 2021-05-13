@@ -138,8 +138,9 @@ def clientes(request):
 
 @login_required(login_url='/login/')
 def simulacao(request, pk):
+    identifier = "Simulação"
     clientes = Cliente.objects.all()
-    context = {'clientes': clientes }
+    context = {'clientes': clientes, 'identifier': identifier }
 
     if request.method == "POST":
         #Coleta os dados de imovel escolhido para simulação e seus valores
@@ -154,6 +155,7 @@ def simulacao(request, pk):
 
 @login_required(login_url='/login/')
 def resumo(request, pk):
+    identifier = "Resumo"
     if request.method == "POST":
         id_imovel = request.POST.get("id_imovel")
         pagamento = request.POST.get("formaPagamento")
@@ -172,7 +174,8 @@ def resumo(request, pk):
                 'cliente': cliente, 
                 'pagamento': pagamento, 
                 'parcelas': parcelas, 
-                'corretor': corretor 
+                'corretor': corretor,
+                'identifier': identifier
                 }
 
             return render(request, 'pages/resumo.html', context)
@@ -196,9 +199,15 @@ def cadastro_venda(request):
         pagamento = request.POST.get("condicao_pagamento_imovel")
         
         #Verifica se venda já existe e cria uma nova caso não exista
-        venda = Venda.get_or_create(imovel=imovel, valor=valor, corretor=corretor, cliente=cliente, condicao_pagamento=pagamento)
+        venda = Venda.objects.get_or_create(imovel=imovel, valor=valor, corretor=corretor, cliente=cliente, condicao_pagamento=pagamento)
         return redirect("/imoveis/")
 
+
+@login_required(login_url='/login/')
+def vendas(request):
+    identifier = "Vendas"
+    context = {'identifier': identifier }
+    return render(request, 'pages/vendas.html', context)
 
 @login_required(login_url='/login/')
 def delete_cliente(request, pk):
