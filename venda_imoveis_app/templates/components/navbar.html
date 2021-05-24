@@ -4,9 +4,29 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
         <!-- Identificador da pagina de cadastro troca a palavr após "Gerenciar" ~>  "Cliente" ou "Imovel"-->
-        {% if identifier %}
+        {% if identifier == "Simulação" or identifier == "Resumo"%}
+            <h5 class="gerenciar-identifier"><strong>{{ identifier }}</strong></h5>
+        {% else %}
             <h5 class="gerenciar-identifier"><strong>Gerenciar {{ identifier }}</strong></h5>
-        {% endif %}
+            {% if identifier == "Vendas" %}
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <button 
+                                class="btn btn-inverse dropdown-toggle" 
+                                type="button" 
+                                id="navbarDropdown" 
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Paginas Cadastro
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'clientes'%}">Clientes</a>
+                            <a class="dropdown-item" href="{% url 'imoveis'%}">Imóveis</a>
+                        </div>
+                    </li>
+                </ul>
+            {% endif %}
+        {% if identifier != "Vendas"%}
             <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -19,7 +39,6 @@
             </button>
             <!-- Filtros só são mostrados caso esteja em uma página que exija 
             identificador consequentemente uma página que contém uma lista-->
-            {% if identifier %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -64,6 +83,7 @@
                     {% endif %}
                 </ul>           
             </div>
+            {% endif %}
             {% endif %}
         </div>
     </nav> 

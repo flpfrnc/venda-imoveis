@@ -1,5 +1,7 @@
 * {
   font-family: 'Lexend', sans-serif; }
+  * ::selection {
+    background-color: #86b7fe; }
 
 .btn-fill {
   background: #56C596;
@@ -67,7 +69,7 @@
         background: white; }
 
 .navbar {
-  background: #329D9C !important;
+  background: #00ACB1 !important;
   align-items: center;
   min-height: 8vh; }
   .navbar .gerenciar-identifier {
@@ -88,22 +90,10 @@
     .navbar .dropdown button:hover {
       color: white; }
   .navbar #filterSelection:hover, .navbar #filterSelection:focus {
-    background: #ececec;
+    background: #f6f6f6;
     color: #56C596; }
-    .navbar #filterSelection:hover option, .navbar #filterSelection:focus option {
+    .navbar #filterSelection:hover option:hover, .navbar #filterSelection:focus option:hover {
       color: #56C596; }
-  .navbar #filterSelection option {
-    display: block;
-    width: 100%;
-    padding: .25rem 1rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0; }
   .navbar #searchbox {
     border-color: #56C596;
     background-color: #ececec; }
@@ -240,7 +230,7 @@
 
 .footer {
   position: relative;
-  background: #CFF4D2;
+  background: #329D9C;
   min-height: 9vh;
   max-height: 9vh;
   box-shadow: 0 -5px 10px -5px rgba(70, 70, 70, 0.4);
@@ -250,7 +240,8 @@
   justify-content: space-between; }
   .footer .greetings {
     margin-left: 1rem;
-    color: #205072; }
+    color: white;
+    text-decoration: none; }
 
 .simulacao-content {
   height: 83vh;
@@ -304,5 +295,46 @@
     border-color: #86b7fe;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); }
+
+.vendas-content {
+  height: 83vh;
+  display: flex; }
+  .vendas-content::-webkit-scrollbar {
+    display: none; }
+  .vendas-content .vendedor-details {
+    height: 100%;
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px 2px #d9d9d9; }
+    .vendas-content .vendedor-details .img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem; }
+      .vendas-content .vendedor-details .img-container img {
+        border-radius: 50%; }
+    .vendas-content .vendedor-details .info-container {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+  .vendas-content .list-vendas {
+    background: #f6f6f6;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    z-index: -1;
+    flex: 2; }
+    .vendas-content .list-vendas .card {
+      border: none;
+      box-shadow: 0 0 10px 2px #d9d9d9;
+      height: fit-content;
+      width: 18rem;
+      margin: 2rem;
+      background: white; }
+    .vendas-content .list-vendas::-webkit-scrollbar {
+      display: none; }
 
 /*# sourceMappingURL=styles.css.map */

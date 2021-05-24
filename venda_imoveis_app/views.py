@@ -40,11 +40,11 @@ def submit_login(request):
         request.session['user_id'] = logged_user.id
         login(request, logged_user)
         if logged_user.is_superuser:
-            return redirect('/imoveis/')
+            return redirect('/')
         
         #Criação/Update de dados do corretor conforme o mesmo realiza login
         corretor = Corretor.objects.get_or_create(nome=logged_user.get_full_name() , defaults={'senha': logged_user.password})
-        return redirect('/imoveis/')
+        return redirect('/')
     else:
         messages.error(request, "Usuario ou senha invalidos. Tente novamente")
     return redirect('/login/')
@@ -58,7 +58,7 @@ def user_logout(request):
             logout(request)
             return redirect('/login/')
         else:
-            return redirect('/imoveis/')
+            return redirect('/')
 
 
 @login_required(login_url='/login/')
@@ -206,7 +206,9 @@ def cadastro_venda(request):
 @login_required(login_url='/login/')
 def vendas(request):
     identifier = "Vendas"
-    context = {'identifier': identifier }
+    corretor = Corretor.objects.get(nome=request.user.get_full_name())
+    vendas = Venda.objects.filter(corretor=corretor)
+    context = {'identifier': identifier, 'corretor': corretor, 'vendas': vendas }
     return render(request, 'pages/vendas.html', context)
 
 @login_required(login_url='/login/')
