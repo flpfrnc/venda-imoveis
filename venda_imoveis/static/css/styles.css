@@ -302,11 +302,12 @@
   .vendas-content::-webkit-scrollbar {
     display: none; }
   .vendas-content .vendedor-details {
+    background: linear-gradient(25deg, #329D9C, #56C596);
     height: 100%;
     flex: 0.5;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 10px 2px #d9d9d9; }
+    box-shadow: 1px 0 8px 2px #999999; }
     .vendas-content .vendedor-details .img-container {
       display: flex;
       align-items: center;
