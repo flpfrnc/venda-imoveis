@@ -37,3 +37,4 @@ typing-extensions==3.10.0.0
 virtualenv==20.4.6
 psycopg2-binary==2.8.6
 django_environ==0.4.5
+whitenoise==5.2.0
