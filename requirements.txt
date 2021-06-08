@@ -9,7 +9,6 @@ cached-property==1.5.2
 captcha-solver==0.1.5
 certifi==2018.1.18
 chardet==3.0.4
-click==8.0.1
 cloud-init==21.1
 colorama==0.3.7
 command-not-found==0.3
