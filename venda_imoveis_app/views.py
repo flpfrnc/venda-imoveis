@@ -28,6 +28,7 @@ def auth_user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
+
         return user
 
 
@@ -40,10 +41,10 @@ def submit_login(request):
         request.session['user_id'] = logged_user.id
         login(request, logged_user)
         if logged_user.is_superuser:
-            return redirect('/')
-        
+            Corretor.objects.get_or_create(nome="admin" , defaults={'senha': "admin"})
+            return redirect('/')            
         #Criação/Update de dados do corretor conforme o mesmo realiza login
-        corretor = Corretor.objects.get_or_create(nome=logged_user.get_full_name() , defaults={'senha': logged_user.password})
+        Corretor.objects.get_or_create(nome=logged_user.get_full_name() , defaults={'senha': logged_user.password})
         return redirect('/')
     else:
         messages.error(request, "Usuario ou senha invalidos. Tente novamente")
@@ -206,6 +207,7 @@ def cadastro_venda(request):
 @login_required(login_url='/login/')
 def vendas(request):
     identifier = "Vendas"
+    print(request.user.get_full_name())
     corretor = Corretor.objects.get(nome=request.user.get_full_name())
     vendas = Venda.objects.filter(corretor=corretor)
     context = {'identifier': identifier, 'corretor': corretor, 'vendas': vendas }
