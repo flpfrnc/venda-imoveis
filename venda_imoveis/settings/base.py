@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'venda_imoveis_app',
     'sass_processor',
     'djmoney',
-    'venda_imoveis',
     'corsheaders',
     'django.utils.timezone'
 ]
