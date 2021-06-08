@@ -1,0 +1,1 @@
+web: gunicorn venda-imoveis.wsgi
