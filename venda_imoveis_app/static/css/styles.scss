@@ -465,22 +465,6 @@
     }
 }
 
-@media screen and (max-width: 500px){
-    .vendas-content{
-        height: 99vh;
-        flex-direction: column;
-
-        .list-vendas {
-            justify-content: center;
-        }
-    }
-
-    .list-content{
-        height: 85.5vh;
-        flex-direction: column;
-    }
-}
-
 //page resumo
 .resumo-content{
     height: 83vh;
@@ -589,5 +573,21 @@
         &::-webkit-scrollbar {
             display: none;
           }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .vendas-content{
+        height: 80vh;
+        flex-direction: column;
+
+        .list-vendas {
+            justify-content: center;
+        }
+    }
+
+    .list-content{
+        height: 85.5vh;
+        flex-direction: column;
     }
 }
