@@ -513,9 +513,13 @@
     }
 }
 
+.list-vendas-container {
+    overflow: scroll;
+}
+
 //vendas
 .vendas-content {
-    height: 83vh;
+    height: 80vh;
     display: flex;
 
 
@@ -535,7 +539,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
 
             img{
                 border-radius: 50%;
@@ -553,7 +557,6 @@
 
     .list-vendas {
         background: rgb(246, 246, 246);
-        height: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

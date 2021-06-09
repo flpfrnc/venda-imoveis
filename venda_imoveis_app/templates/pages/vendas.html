@@ -2,30 +2,34 @@
 {% load static %}
 {% block vendas %}
 <div class="vendas-content">
-<div class="vendedor-details">
-    <div class="img-container">
-        <img src="{% static 'images/user.png' %}" width="100px">
-    </div>
-    <div class="info-container"><h4>{{corretor.nome}}</h4></div>
-</div>
-<div class="list-vendas">
-    {% if vendas %}
-    {% for vendas in vendas %}
-    <div class="card">
-        <div class="card-body">
-        <h5 class="card-title">Venda #{{vendas.id}}</h5>
-        <hr>
-            <div class="card-text">
-                <p>{{vendas.corretor.nome}}</p>
-                <p>{{vendas.cliente}}</p>
-                <p>{{vendas.valor}}</p>
-                <p>{{vendas.condicao_pagamento}}</p>
-                <p>{{vendas.imovel.localizacao}}</p>
-            </div>
+    <div class="vendedor-details">
+        <div class="img-container">
+            <img src="{% static 'images/user.png' %}" width="100px">
+        </div>
+        <div class="info-container">
+            <h4>{{corretor.nome}}</h4>
         </div>
     </div>
-    {% endfor %}
-    {% endif %}
-</div>
+    <div class="list-vendas-container">
+        <div class="list-vendas">
+            {% if vendas %}
+            {% for vendas in vendas %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Venda #{{vendas.id}}</h5>
+                    <hr>
+                    <div class="card-text">
+                        <p>{{vendas.corretor.nome}}</p>
+                        <p>{{vendas.cliente}}</p>
+                        <p>{{vendas.valor}}</p>
+                        <p>{{vendas.condicao_pagamento}}</p>
+                        <p>{{vendas.imovel.localizacao}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
