@@ -180,27 +180,6 @@
             display: none;
         }
     }
-
-    .form-logout {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        margin-bottom: 1.5rem;
-        margin-right: 3rem;
-    
-        .btn-logout {
-            background: rgb(253, 84, 84);
-            color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
-        
-            &:hover {
-                background: rgb(221, 72, 72);
-                border: 1px solid rgb(221, 72, 72);
-                border-radius: 0.5rem;
-            }
-        }
-    }
 }
 
 // imoveis table
@@ -212,6 +191,16 @@
     &:last-child{
         border-bottom: 0.5px solid rgb(240, 240, 240);
     }   
+
+    img {
+        border-radius: 25px;
+        margin-right: 0.5rem;
+        transform: translateY(0.5rem);
+        }
+
+    span {
+        margin-top: 1rem;
+    }
 }
 
 // clientes table
@@ -220,6 +209,16 @@
         &:first-child{
             display: flex;
             align-items: center;
+        }
+
+        img {
+        border-radius: 25px;
+        margin-right: 0.5rem;
+        transform: translateY(0.5rem);
+        }
+
+        span {
+            margin-top: 1rem;
         }
     }
 }
@@ -295,6 +294,7 @@
         .btn-option {
             background:rgb(236, 236, 236);
             border-radius: 0.75rem;
+            margin-bottom: 1rem;
     
             &:hover {
                 background: #CCC;
@@ -370,8 +370,8 @@
 .footer {
     position: relative;
     background: #329D9C;
-    min-height: 9vh;
-    max-height: 9vh;
+    min-height: 6.5vh;
+    max-height: 6.5vh;
     box-shadow: 0 -5px 10px -5px rgba(70, 70, 70, 0.4);
     z-index: 5;
     display: flex;
@@ -382,6 +382,23 @@
         margin-left: 1rem;
         color: white;
         text-decoration: none;
+    }
+
+    .form-logout {
+        margin-right: 3rem;
+    
+        .btn-logout {
+            background: rgb(253, 84, 84);
+            color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3);
+        
+            &:hover {
+                background: rgb(221, 72, 72);
+                border: 1px solid rgb(221, 72, 72);
+                border-radius: 0.5rem;
+            }
+        }
     }
 }
 
@@ -401,6 +418,38 @@
 }
 
 // page simulação responsiva
+@media screen and (max-width: 700px){
+
+    .dados-imovel {
+        .dropdown {
+            position: relative;
+            display: inline-block;
+
+            .btn-option {
+                background:rgb(236, 236, 236);
+                border-radius: 0.75rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 590px){
+
+    .dados-imovel {
+        .dropdown {
+            position: relative;
+            display: inline-block;
+
+            .btn-option {
+                background:rgb(236, 236, 236);
+                border-radius: 0.75rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 992px){
     .simulacao-content{
         height: 99vh;
@@ -408,6 +457,27 @@
         .box-element {
             margin: 0.5rem;
         }
+    }
+
+    .list-content{
+        height: 85.5vh;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .vendas-content{
+        height: 99vh;
+        flex-direction: column;
+
+        .list-vendas {
+            justify-content: center;
+        }
+    }
+
+    .list-content{
+        height: 85.5vh;
+        flex-direction: column;
     }
 }
 
@@ -490,8 +560,10 @@
 
         .info-container {
             display: flex;
+            text-align: center;
             align-items: center;
             justify-content: center;
+            color: white;
         }
     }
 

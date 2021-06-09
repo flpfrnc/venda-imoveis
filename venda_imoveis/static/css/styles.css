@@ -107,31 +107,31 @@
 .content .formCadastroImovel select {
   display: none; }
 
-.content .form-logout {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 1.5rem;
-  margin-right: 3rem; }
-  .content .form-logout .btn-logout {
-    background: #fd5454;
-    color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3); }
-    .content .form-logout .btn-logout:hover {
-      background: #dd4848;
-      border: 1px solid #dd4848;
-      border-radius: 0.5rem; }
-
 .dados-imovel tr:first-child {
   border-top: none; }
 
 .dados-imovel tr:last-child {
   border-bottom: 0.5px solid #f0f0f0; }
 
+.dados-imovel tr img {
+  border-radius: 25px;
+  margin-right: 0.5rem;
+  transform: translateY(0.5rem); }
+
+.dados-imovel tr span {
+  margin-top: 1rem; }
+
 .dados-cliente td:first-child {
   display: flex;
   align-items: center; }
+
+.dados-cliente td img {
+  border-radius: 25px;
+  margin-right: 0.5rem;
+  transform: translateY(0.5rem); }
+
+.dados-cliente td span {
+  margin-top: 1rem; }
 
 .table-light {
   width: 100%;
@@ -180,7 +180,8 @@
     display: inline-block; }
     .table-light .dropdown .btn-option {
       background: #ececec;
-      border-radius: 0.75rem; }
+      border-radius: 0.75rem;
+      margin-bottom: 1rem; }
       .table-light .dropdown .btn-option:hover {
         background: #CCC; }
     .table-light .dropdown .dropdown-content {
@@ -231,8 +232,8 @@
 .footer {
   position: relative;
   background: #329D9C;
-  min-height: 9vh;
-  max-height: 9vh;
+  min-height: 6.5vh;
+  max-height: 6.5vh;
   box-shadow: 0 -5px 10px -5px rgba(70, 70, 70, 0.4);
   z-index: 5;
   display: flex;
@@ -242,6 +243,17 @@
     margin-left: 1rem;
     color: white;
     text-decoration: none; }
+  .footer .form-logout {
+    margin-right: 3rem; }
+    .footer .form-logout .btn-logout {
+      background: #fd5454;
+      color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0px 0px 10px 0px rgba(110, 109, 109, 0.3); }
+      .footer .form-logout .btn-logout:hover {
+        background: #dd4848;
+        border: 1px solid #dd4848;
+        border-radius: 0.5rem; }
 
 .simulacao-content {
   height: 83vh;
@@ -254,11 +266,33 @@
     border-radius: 4px;
     padding: 1.5rem; }
 
+@media screen and (max-width: 700px) {
+  .dados-imovel .dropdown {
+    position: relative;
+    display: inline-block; }
+    .dados-imovel .dropdown .btn-option {
+      background: #ececec;
+      border-radius: 0.75rem;
+      margin-top: 1rem; } }
+
 @media screen and (max-width: 992px) {
   .simulacao-content {
     height: 99vh; }
     .simulacao-content .box-element {
-      margin: 0.5rem; } }
+      margin: 0.5rem; }
+  .list-content {
+    height: 85.5vh;
+    flex-direction: column; } }
+
+@media screen and (max-width: 500px) {
+  .vendas-content {
+    height: 99vh;
+    flex-direction: column; }
+    .vendas-content .list-vendas {
+      justify-content: center; }
+  .list-content {
+    height: 85.5vh;
+    flex-direction: column; } }
 
 .resumo-content {
   height: 83vh;
@@ -317,8 +351,10 @@
         border-radius: 50%; }
     .vendas-content .vendedor-details .info-container {
       display: flex;
+      text-align: center;
       align-items: center;
-      justify-content: center; }
+      justify-content: center;
+      color: white; }
   .vendas-content .list-vendas {
     background: #f6f6f6;
     height: 100%;
