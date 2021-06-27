@@ -352,7 +352,7 @@ footer {
   .vendas-content .vendedor-details {
     background: linear-gradient(25deg, #329D9C, #56C596);
     min-height: 100%;
-    width: 25vh;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     box-shadow: 1px 0 8px 2px #999999;
@@ -393,9 +393,10 @@ footer {
 @media screen and (max-width: 500px) {
   .vendas-content {
     flex-direction: column; }
-    .vendas-content .list-vendas-container {
-      min-height: 100%;
-      margin-bottom: auto; }
+    .vendas-content .vendedor-details {
+      padding: 0.5rem;
+      min-height: 0;
+      width: 100vw; }
     .vendas-content .list-vendas {
       justify-content: center; }
   footer {
