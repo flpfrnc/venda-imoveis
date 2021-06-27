@@ -115,8 +115,10 @@ html {
     .navbar #searchbox::placeholder {
       color: #56C596; }
 
-.content .formCadastroImovel select {
-  display: none; }
+.content {
+  height: 100%; }
+  .content .formCadastroImovel select {
+    display: none; }
 
 .dados-imovel tr:first-child {
   border-top: none; }
@@ -343,13 +345,14 @@ footer {
   overflow: auto; }
 
 .vendas-content {
+  height: 100%;
   display: flex; }
   .vendas-content::-webkit-scrollbar {
     display: none; }
   .vendas-content .vendedor-details {
     background: linear-gradient(25deg, #329D9C, #56C596);
     min-height: 100%;
-    flex: 0.30;
+    width: 25vh;
     display: flex;
     flex-direction: column;
     box-shadow: 1px 0 8px 2px #999999;

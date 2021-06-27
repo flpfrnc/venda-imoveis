@@ -24,9 +24,9 @@
     <body>
         <div class="app">
             <!-- Container de todos os componentes da aplicação -->
-            <div class="content">
-                {% block navbar %}
-                {% endblock %}
+            {% block navbar %}
+            {% endblock %}
+            <div class="content">                
                 {% block lista_imoveis %}{% endblock %}
                 {% block lista_clientes %}{% endblock %}
                 {% block vendas %}{% endblock %}
