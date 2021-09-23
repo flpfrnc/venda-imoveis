@@ -78,6 +78,12 @@ html {
       .login .container form input:focus {
         background: white; }
 
+#id_valor_1 {
+  visibility: hidden; }
+
+#id_comissao_vendedor_1 {
+  visibility: hidden; }
+
 .navbar {
   background: #00ACB1 !important;
   align-items: center;
