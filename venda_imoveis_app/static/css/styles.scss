@@ -187,10 +187,7 @@ html {
 
 // index Page
 .content {
-    min-height: 50rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100%;
 
     .formCadastroImovel {
         select {
@@ -397,6 +394,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
     .greetings {
         margin-left: 1rem;
@@ -423,8 +423,13 @@ footer {
     }
 }
 
+
+.row > * {
+    margin-bottom: 1rem;
+}
 // page simulação
 .simulacao-content {
+    padding: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -499,6 +504,7 @@ footer {
         padding: 1.5rem;
     }
 }
+
 
 // modal
 .modal-body {
@@ -581,7 +587,7 @@ footer {
         flex: 2;
         max-height: 100%;
         min-height: 100%;
-
+            
         .card {
             border: none;
             box-shadow: 0 0 10px 2px hsl(0, 0%, 85%);
