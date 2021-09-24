@@ -26,28 +26,28 @@ html {
     color: white; }
 
 .btn-inverse {
-  background: white;
-  border: 1px solid #56C596;
-  color: #56C596;
+  background: white !important;
+  border: 1px solid #56C596 !important;
+  color: #56C596 !important;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px 0 rgba(110, 109, 109, 0.3); }
   .btn-inverse:hover {
-    background: #56C596;
-    border: 1px solid #56C596;
+    background: #56C596 !important;
+    border: 1px solid #56C596 !important;
     border-radius: 0.5rem;
-    color: white; }
+    color: white !important; }
 
 .btn-voltar {
-  background: #00ACB1;
-  border: 1px solid #00ACB1;
-  color: white;
+  background: #00ACB1 !important;
+  border: 1px solid #00ACB1 !important;
+  color: white !important;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px 0 rgba(110, 109, 109, 0.3); }
   .btn-voltar:hover {
-    background: white;
-    border: 1px solid #00ACB1;
-    border-radius: 0.5rem;
-    color: #00ACB1; }
+    background: white !important;
+    border: 1px solid #00ACB1 !important;
+    border-radius: 0.5rem !important;
+    color: #00ACB1 !important; }
 
 .login {
   height: 100vh;
@@ -88,7 +88,8 @@ html {
   background: #00ACB1 !important;
   align-items: center;
   min-height: 8vh;
-  z-index: 999; }
+  z-index: 999;
+  margin-bottom: 2rem; }
   .navbar .gerenciar-identifier {
     color: white; }
   .navbar .navbar-collapse {
@@ -101,25 +102,25 @@ html {
       background: #56C596;
       color: white; }
   .navbar .dropdown button {
-    color: #56C596; }
+    color: #56C596 !important; }
     .navbar .dropdown button:focus {
-      color: #56C596; }
+      color: #56C596 !important; }
     .navbar .dropdown button:hover {
-      color: white; }
+      color: white !important; }
   .navbar #filterSelection:hover, .navbar #filterSelection:focus {
-    background: #f6f6f6;
-    color: #56C596; }
+    background: #f6f6f6 !important;
+    color: #56C596 !important; }
     .navbar #filterSelection:hover option:hover, .navbar #filterSelection:focus option:hover {
-      color: #56C596; }
+      color: #56C596 !important; }
   .navbar #searchbox {
-    border-color: #56C596;
-    background-color: #ececec; }
+    border-color: #56C596 !important;
+    background-color: #ececec !important; }
     .navbar #searchbox:hover, .navbar #searchbox:focus, .navbar #searchbox:active {
-      background-color: white; }
+      background-color: white !important; }
       .navbar #searchbox:hover::placeholder, .navbar #searchbox:focus::placeholder, .navbar #searchbox:active::placeholder {
-        color: #e2e2e2; }
+        color: #e2e2e2 !important; }
     .navbar #searchbox::placeholder {
-      color: #56C596; }
+      color: #56C596 !important; }
 
 .content {
   min-height: 100%; }
@@ -239,8 +240,8 @@ html {
         text-decoration: none;
         display: block; }
         .table-light .dropdown .dropdown-content button:hover, .table-light .dropdown .dropdown-content button:focus {
-          background-color: #56C596;
-          color: white; }
+          background-color: #56C596 !important;
+          color: white !important; }
     .table-light .dropdown .show {
       display: block; }
 
@@ -359,7 +360,8 @@ footer {
 
 .vendas-content {
   height: 100%;
-  display: flex; }
+  display: flex;
+  background: #f6f6f6; }
   .vendas-content::-webkit-scrollbar {
     display: none; }
   .vendas-content .vendedor-details {
