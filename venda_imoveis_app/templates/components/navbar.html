@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
         <!-- Identificador da pagina de cadastro troca a palavr após "Gerenciar" ~>  "Cliente" ou "Imovel"-->
         {% if identifier == "Simulação" or identifier == "Resumo"%}
@@ -41,7 +41,7 @@
             identificador consequentemente uma página que contém uma lista-->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <form class="form-inline" method="GET">
                             <input class="form-control mr-sm-2" type="search" name="srch" id="searchbox"placeholder="Pesquisar {{ identifier }}" aria-label="Search">
                         </form>
@@ -50,12 +50,12 @@
                     <form id="filterForm" action="?" method="post">
                     {% csrf_token %}
                         <select id="filterSelection" name="option" class="form-select btn btn-inverse" aria-label=".form-select-sm">
-                        <!-- Bloco de corpo dos filtros da pagina -->
+                        
                         {% block select_imoveis%}{% endblock %}
                         {% block select_clientes%}{% endblock %}
                         </select>                    
                     </form>
-                    </li>
+                    </li>-->
                     <li class="nav-item dropdown">
                         <button 
                                 class="btn btn-inverse dropdown-toggle" 

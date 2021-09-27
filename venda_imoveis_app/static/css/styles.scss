@@ -34,32 +34,32 @@ html {
 }
 
 .btn-inverse {
-    background: white;
-    border: 1px solid #56C596;
-    color: #56C596;
+    background: white !important;
+    border: 1px solid #56C596 !important; 
+    color: #56C596 !important;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px 0 rgba(110, 109, 109, 0.3);
 
     &:hover {
-        background: #56C596;
-        border: 1px solid #56C596;
+        background: #56C596 !important;
+        border: 1px solid #56C596 !important;
         border-radius: 0.5rem;
-        color: white;
+        color: white !important;
     }
 }
 
 .btn-voltar {
-    background: #00ACB1;
-    border: 1px solid #00ACB1;
-    color: white;
+    background: #00ACB1 !important;
+    border: 1px solid #00ACB1 !important;
+    color: white !important;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px 0 rgba(110, 109, 109, 0.3);
 
     &:hover {
-        background: white;
-        border: 1px solid #00ACB1;
-        border-radius: 0.5rem;
-        color: #00ACB1;
+        background: white !important;
+        border: 1px solid #00ACB1 !important;
+        border-radius: 0.5rem !important;
+        color: #00ACB1 !important;
     }
 }
 
@@ -123,6 +123,7 @@ html {
     align-items: center;
     min-height: 8vh;
     z-index: 999;
+    margin-bottom: 2rem;
 
     .gerenciar-identifier {
         color: white;
@@ -151,14 +152,14 @@ html {
         }
 
         button {
-            color: #56C596;
+            color: #56C596 !important;
 
             &:focus {
-                color: #56C596;
+                color: #56C596 !important;
             }
 
             &:hover {
-                color: white;
+                color: white !important;
             }
         }
     }
@@ -166,30 +167,30 @@ html {
     #filterSelection {
         &:hover,
         &:focus {
-            background: rgb(246, 246, 246);
-            color: #56C596;
+            background: rgb(246, 246, 246) !important;
+            color: #56C596 !important;
 
             option:hover {
-                color: #56C596;
+                color: #56C596 !important;
             }
         }
     }
 
     #searchbox {
-        border-color: #56C596;
-        background-color: rgb(236, 236, 236);
+        border-color: #56C596 !important;
+        background-color: rgb(236, 236, 236) !important;
 
         &:hover,
         &:focus,
         &:active {
-            background-color: white;
+            background-color: white !important;
             &::placeholder {
-                color: rgb(226, 226, 226);
+                color: rgb(226, 226, 226) !important;
             }
         }
 
         &::placeholder {
-            color: #56C596;
+            color: #56C596 !important;
         }
     }
 }
@@ -370,8 +371,8 @@ html {
 
                 &:hover,
                 &:focus {
-                    background-color: #56C596;
-                    color: white;
+                    background-color: #56C596 !important;
+                    color: white !important;
                 }
             }
         }
