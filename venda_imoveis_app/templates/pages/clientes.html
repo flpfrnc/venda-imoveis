@@ -2,7 +2,7 @@
 {% load static %}
 {% block lista_clientes %}
 <div class="list-content">
-    <table class="table-light table table-bordered no-footer dtr-inline" id="table-cliente">
+    <table class="table-light">
         <thead>
             <tr>
                 <th>Cliente</th>
@@ -48,19 +48,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <script>
-        $(document).ready(function () {
-        $('#table-cliente').DataTable({
-            language: {
-                url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
-            },
-
-            responsive:
-                true,
-            pageLength: 
-                50,
-        });
-    });
-    </script>
 </div>
 {% endblock %}
